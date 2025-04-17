@@ -12,7 +12,7 @@ def get_snowflake_connection():
     conn = snowflake.connector.connect(
         user='rajkothari',
         password=os.environ.get('SNOWFLAKE_DEEL_PASSWORD'),
-        account='xduamzf-vb71832',
+        account=os.environ.get('SNOWFLAKE_DEEL_ACCOUNT'),
         warehouse='COMPUTE_WH',
         database='RAWDATA_DB',
         schema='TRANSACTIONS',
