@@ -1,0 +1,10 @@
+version: 1
+sources:
+  - name: deel_datasets
+    database: RAWDATA_DB
+    schema: TRANSACTIONS
+    tables:
+      - name: invoices
+        description: "Invoices dataset"
+      - name: organizations
+        description: "Organizations dataset"

@@ -1,0 +1,23 @@
+# Dataset files
+/datasets/
+*.csv
+*.zip
+
+# Python virtual environments
+.venv/
+venv/
+**/venv/
+
+# dbt specific
+target/
+dbt_packages/
+logs/
+.dbt/
+
+# OS specific
+.DS_Store
+**/.DS_Store
+
+# IDE
+.idea/
+.vscode/

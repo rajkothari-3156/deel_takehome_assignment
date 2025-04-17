@@ -1,0 +1,21 @@
+deel_takehome:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      database: dev_db
+      schema: analytics
+      account: xduamzf-vb71832
+      user: rajkothari
+      password: "{{env_var('SNOWFLAKE_DEEL_PASSWORD')}}"
+      role: DBT_ROLE
+      warehouse: COMPUTE_WH
+    prod:
+      type: snowflake
+      database: prod_db
+      schema: analytics
+      account: xduamzf-vb71832
+      user: rajkothari
+      password: "{{env_var('SNOWFLAKE_DEEL_PASSWORD')}}"
+      role: DBT_ROLE
+      warehouse: COMPUTE_WH

@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: dim_organizations
+    columns:
+      - name: organization_id
+        tests:
+          - unique
+          - not_null
+      - name: first_payment_date
+        tests:
+          - not_null
+      - name: created_date
+        description: "Date when the organization was created"
+        tests:
+          - not_null
+    tests:
+      - dbt_utils.expression_is_true:
+          expression: "first_payment_date>=created_date and first_payment_date is not null and created_date is not null"
+
+  - name: fct_organizations_daily_balance
+    columns:
+      - name: organization_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_organizations')
+              field: organization_id
+      - name: transaction_amount_in_usd
+        tests:
+          - not_null
+      - name: curr_balance_in_usd
+        tests:
+          - not_null
+      - name: alert_flag
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1]
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - organization_id
+            - transaction_date
